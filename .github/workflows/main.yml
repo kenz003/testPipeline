@@ -70,8 +70,10 @@ jobs:
         uses: docker/build-push-action@v5.3.0
         with:
           context: .
-          file: docker\php\Dockerfile # Updated path to your Laravel Dockerfile
+          file: docker/php/Dockerfile # Updated path to your Laravel Dockerfile
           push: true
           tags: souhailchaiberras/testpipeline:latest 
+      
+      
 
       
