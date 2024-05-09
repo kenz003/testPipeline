@@ -11,6 +11,7 @@ on:
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
+    environment: Test Sample Secrets
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
