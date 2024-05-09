@@ -8,8 +8,13 @@ ARG GID
 ENV UID=${UID}
 ENV GID=${GID}
 
+# both the group and user creation steps in your Dockerfile handle pre-existing conditions
 RUN if ! getent group ${GID} ; then addgroup --system --gid ${GID} learnfinitylabs; fi
-RUN adduser --system --home /bin/sh --no-create-home --uid ${UID} --ingroup learnfinitylabs --disabled-login --disabled-password learnfinitylabs
+RUN if ! id -u ${UID} >/dev/null 2>&1; then \
+      adduser --system --uid ${UID} --ingroup learnfinitylabs --disabled-login --disabled-password --shell /bin/sh --no-create-home learnfinitylabs; \
+    else \
+      echo "User with UID ${UID} already exists"; \
+    fi
 
 # Update www.conf to use the custom user and group
 RUN sed -i 's/user = www-data/user = learnfinitylabs/g' /usr/local/etc/php-fpm.d/www.conf
