@@ -31,7 +31,7 @@ jobs:
         run: |
           ls -la  # List all files in the directory to check for .env.example
           cp .env.example .env
-          php artisan key:generatet 
+          php artisan key:generate
         working-directory: ./html
 
       - name: Run Laravel migrations (using SQLite for testing)
