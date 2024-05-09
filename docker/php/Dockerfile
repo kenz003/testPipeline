@@ -19,7 +19,8 @@ RUN chmod +x /usr/local/bin/install-php-extensions && \
 
 WORKDIR ${PHP_HOST_ROOT_DIRECTORY}
 
-COPY ./php.ini /usr/local/etc/php/php.ini
+COPY docker/php/php.ini /usr/local/etc/php/php.ini
+
 
 USER learnfinitylabs
 
