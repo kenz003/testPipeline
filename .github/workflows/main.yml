@@ -29,6 +29,7 @@ jobs:
 
       - name: Setup Laravel Environment
         run: |
+          ls -la  # List all files in the directory to check for .env.example
           cp .env.example .env
           php artisan key:generate
         working-directory: ./html
