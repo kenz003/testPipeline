@@ -55,6 +55,7 @@ jobs:
 
       - name: Run Vue.js tests
         run: npm run test
+        working-directory: ./html # find package.json file direc
 
       # Login to Docker Hub
       - name: Log in to Docker Hub
