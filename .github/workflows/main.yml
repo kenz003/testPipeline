@@ -31,16 +31,18 @@ jobs:
         run: |
           ls -la  # List all files in the directory to check for .env.example
           cp .env.example .env
-          php artisan key:generate
+          php artisan key:generatet 
         working-directory: ./html
 
       - name: Run Laravel migrations (using SQLite for testing)
         run: |
           touch database/database.sqlite
           php artisan migrate
+        working-directory: ./html
 
       - name: Run Laravel tests
         run: php artisan test
+        working-directory: ./html
 
       # Tests for Vue.js
       - name: Install Node.js
